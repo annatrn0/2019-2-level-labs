@@ -37,7 +37,13 @@ def filter_stop_words(frequencies: dict, stop_words: tuple) -> dict:
 
 
 def get_top_n(frequencies: dict, top_n: int) -> tuple:
-    """
-    Takes first N popular words
-    """
-    pass
+    if top_n > 0:
+        for i in third_dict:
+            if third_dict.get(i, 0) == 0:
+                third_dict[i] = 1
+            else:
+                count = third_dict[i] + 1
+                third_dict[i] = count
+                count = 0
+    top_words = (max(sorted(third_dict.keys()), key=lambda count: third_dict[count]))
+    return (top_words)
