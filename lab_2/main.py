@@ -20,7 +20,15 @@ def initialize_edit_matrix(edit_matrix: tuple, add_weight: int, remove_weight: i
 
 
 def minimum_value(numbers: tuple) -> int:
-    pass
+    def minimum_value(*numbers: tuple) -> int:
+        min = numbers[0]
+        i = 0
+        for elem in numbers:
+            if numbers[i] > numbers[i + 1]:
+                min = numbers[i + 1]
+        i += 1
+        return(min)
+
 
 
 def fill_edit_matrix(edit_matrix: tuple,
