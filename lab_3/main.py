@@ -42,16 +42,19 @@ def encode(storage_instance, corpus) -> list:
 
 def split_by_sentence(text: str) -> list:
     #gonna clear the text from symbols
-    forbidden_symbols = ['`', '~', '@', '', '#',
-                         '№', '$', '%', '^', '&', '*', '(', ')', '-', '_', '+', '=', '{', '}', '[', ']',
-                         '<', '>', '/', '|', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '\n']
-    text_new = [i for i in text if i not in forbidden_symbols]
-    text_new =''.join(text_new)
-    #the text is clear now
-    text_new = text_new.split(".")
-    text_new = [i for i in text_new if i is not ''] #remove extra spaces
-    print(text_new)
-    pass
+    if text is " " or text is None:
+        text_new = []
+    else:
+        forbidden_symbols = ['`', '~', '@', '', '#',
+                             '№', '$', '%', '^', '&', '*', '(', ')', '-', '_', '+', '=', '{', '}', '[', ']',
+                             '<', '>', '/', '|', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '\n']
+        punctuation = ['!', '?', '.', ',', ':', ';', '...', '?!', '!?', '?..', '!..']
+        text_new = [i for i in text if i not in forbidden_symbols and i[0] is not '!']
+        text_new = ''.join(text_new)
+        text_new = text_new.split(".")
+        text_new = [i for i in text_new if i is not '']
+        print(text_new)
+    return(text_new)
 
-split_by_sentence('Mar&y w(as quick t(o realize. Life i*s a mess.')
+split_by_sentence(REFERENCE_TEXT)
 
