@@ -12,8 +12,19 @@ if __name__ == '__main__':
 
 
 class WordStorage:
+
+    def __init__(self):
+        self.storage = {}
+
     def put(self, word: str) -> int:
-        pass
+        count = 0
+        if type(word) == str and word not in self.storage:
+            self.storage[word] = count
+            count += 1
+        else:
+            print('try again')
+        print(self.storage)
+        return 1
 
     def get_id_of(self, word: str) -> int:
         pass
